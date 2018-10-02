@@ -5,5 +5,6 @@
     protected override bool ShouldBreak(bool result)
     {
         return !result;
+
     }
 }

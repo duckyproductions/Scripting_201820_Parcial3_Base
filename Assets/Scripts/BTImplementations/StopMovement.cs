@@ -5,6 +5,7 @@ public class StopMovement : Task
 {
     public override bool Execute()
     {
-        return base.Execute();
+        IA.Stop(); 
+        return true;
     }
 }

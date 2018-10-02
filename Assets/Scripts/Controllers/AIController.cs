@@ -8,12 +8,16 @@ public class AIController : ActorController
 
     [SerializeField]
     private Root btRootNode;
-
+ 
     public void MoveAI()
     {
         MoveActor();
     }
 
+    private void Update()
+    {
+        GetComponent<Root>().Execute();
+    }
     protected override void Start()
     {
         base.Start();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -20,6 +21,11 @@ public abstract class ActorController : MonoBehaviour
 
     public bool IsTagged { get; protected set; }
 
+    public int timesTagged = 0;
+
+    public static GameObject lastTagged;
+    public static GameObject currentTagged;
+
     // Use this for initialization
     protected virtual void Start()
     {
@@ -29,7 +35,10 @@ public abstract class ActorController : MonoBehaviour
         SetTagged(false);
 
         onActorTagged += SetTagged;
+
     }
+
+
 
     protected abstract Vector3 GetTargetLocation();
 
@@ -44,12 +53,24 @@ public abstract class ActorController : MonoBehaviour
 
         if (otherActor != null)
         {
-            print("collided!");
+            //print("collided!");
 
-            otherActor.onActorTagged(true);
-            onActorTagged(false);
+            if (IsTagged)
+            {
+                if (otherActor != lastTagged)
+                {
+                    lastTagged = gameObject;
+                    otherActor.onActorTagged(true);
+                    onActorTagged(false);
+
+
+                    print(otherActor != lastTagged);
+                }
+            }
         }
     }
+
+
 
     protected virtual void OnDestroy()
     {
@@ -62,10 +83,23 @@ public abstract class ActorController : MonoBehaviour
     {
         IsTagged = val;
 
-        if (renderer)
+        if (IsTagged)
         {
-            print(string.Format("Changing color to {0}", gameObject.name));
-            renderer.material.color = val ? taggedColor : baseColor;
+            renderer.material.color = taggedColor;
+            currentTagged = this.gameObject;
+            timesTagged++;
         }
+        else
+            renderer.material.color = baseColor;
+    }
+
+    public void Stop()
+    {
+        agent.SetDestination(transform.position);
+    }
+
+    public void End()
+    {
+        agent.speed = 0;
     }
 }

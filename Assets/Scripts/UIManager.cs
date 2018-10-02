@@ -5,7 +5,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Text timerText;
-
+ 
+    GameController gC;
     // Use this for initialization
     private void Start()
     {
@@ -13,11 +14,16 @@ public class UIManager : MonoBehaviour
         {
             enabled = false;
         }
+
+        gC = GetComponent<GameController>();
+       
+
     }
 
     // Update is called once per frame
     private void Update()
     {
         //TODO: Set text from GameController
+        timerText.text = gC.CurrentGameTime.ToString("F2");
     }
 }

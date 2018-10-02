@@ -14,7 +14,14 @@
 
         if (result)
         {
-            result = base.Execute();
+            foreach (Node node in children)
+            { 
+                result = node.Execute(); 
+                if (ShouldBreak(result))
+                {
+                    break;
+                }
+            }
         }
 
         return result;
@@ -26,7 +33,7 @@
     }
 
     protected virtual bool CheckCondition()
-    {
+    { 
         return true;
     }
 }

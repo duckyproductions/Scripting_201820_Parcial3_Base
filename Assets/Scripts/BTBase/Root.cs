@@ -6,7 +6,7 @@ public class Root : Node
     private Node child;
 
     public override bool Execute()
-    {
+    { 
         return child.Execute();
     }
 
