@@ -1,0 +1,7 @@
+profe, logré llegar a algo "aceptable" , por lo menos hay un win state , y se puede jugar.
+(el win state, es que los ganadores se tornan de color amarillo)
+El Game Controller está dentro de la camara, desde ahí puede definir los parametros de la partida
+
+Por parte de la IA logré casi todo lo del arbol, solo tuve un problema con el cambio de tagged, a veces falla, la verdad no se por qué, pero en general todo debería estar bien
+
+                  Sebastían Arboleda Alvarez
