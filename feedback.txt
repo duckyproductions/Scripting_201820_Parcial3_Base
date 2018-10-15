@@ -1,0 +1,9 @@
+Feedback
+
+Examen (5.0/5.0)
+ * Los AI buscan las esquinas, y una vez llegan ahí no salen. Al parecer porque no consideran retroceder para huír del tagged.
+
+Bonificación (0.0/0.5)
+Compensación : 1.0
+
+Total: 5.0 / 0.5 + 1.0
